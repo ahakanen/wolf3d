@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 14:02:14 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/23 11:34:20 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/29 17:00:47 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	initplayerstart2(t_params *params)
 {
-	params->p.speed = 8;
+	params->p.speed = 4;
 	params->p.x = ((int)params->p.x << 6) + 32;
 	params->p.y = ((int)params->p.y << 6) + 32;
 }

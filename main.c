@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/23 17:11:10 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/29 16:44:19 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,7 @@ static void		initthreadlims(t_params *params)
 
 static t_params	initparams(void)
 {
-	t_params params;
-
+	t_params	params;
 	params.p.a = 0;
 	params.p.x = 0;
 	params.p.y = 0;
@@ -72,6 +71,8 @@ static t_params	initparams(void)
 	params.skyclr = g_initcolor(98, 24, 19, 0);
 	params.floorclr = g_initcolor(50, 150, 150, 0);
 	initthreadlims(&params);
+	params.llimit = (double)((double)1 / (double)FRAMELIMIT);
+	params.llimitacc = 0;
 	return (params);
 }
 

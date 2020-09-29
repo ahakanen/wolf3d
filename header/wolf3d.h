@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 09:40:43 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/29 16:45:22 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIN_X 640
 # define WIN_Y 512
 # define TILE 64
-# define STARTROTANGLES 32
+# define STARTROTANGLES 64
 # define END 0
 # define ERRDEF 0
 # define ERRMEM 1
@@ -27,6 +27,7 @@
 # define HALFPI 1.570796326
 # define THREEHALVESPI 4.712388980
 # define DEG 0.0174533
+# define FRAMELIMIT 60
 
 # if __APPLE__
 #  define ESC 53
@@ -150,6 +151,12 @@ typedef struct	s_params
 	clock_t		cstart;
 	clock_t		cend;
 	double		cframe;
+	int			fps;
+	clock_t		lstart;
+	clock_t		lend;
+	double		lcycle;
+	double		llimitacc;
+	double		llimit;
 }				t_params;
 
 typedef struct	s_tparams
@@ -196,5 +203,6 @@ void			drawsky(t_params *params);
 void			drawfloor(t_params *params);
 t_tparams		threadhelp(t_params *params);
 int				render_loop(t_params *params);
+void			check(t_params *params);
 
 #endif
