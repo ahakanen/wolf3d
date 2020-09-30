@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 09:09:36 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/30 14:42:58 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ static void		castrays(t_params *params)
 
 void			render(t_params *params)
 {
-	params->cstart = clock();
 	params->img = mlx_new_image(params->win.mlx_ptr, WIN_X, \
 									WIN_Y);
 	params->img_ptr = mlx_get_data_addr(params->img, &params->bpp, \
@@ -117,6 +116,4 @@ void			render(t_params *params)
 	castrays(params);
 	drawminimap(params);
 	mlx_destroy_image(params->win.mlx_ptr, params->img);
-	params->cend = clock();
-	params->cframe = (double)(params->cend - params->cstart) / CLOCKS_PER_SEC;
 }

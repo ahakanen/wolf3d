@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 16:45:22 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/30 14:51:34 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,15 +148,13 @@ typedef struct	s_params
 	int			rotarrlast;
 	t_color		floorclr;
 	t_color		skyclr;
-	clock_t		cstart;
-	clock_t		cend;
-	double		cframe;
-	int			fps;
+	char		*fps;
 	clock_t		lstart;
 	clock_t		lend;
 	double		lcycle;
 	double		llimitacc;
 	double		llimit;
+	t_vec2		fpsloc;
 }				t_params;
 
 typedef struct	s_tparams

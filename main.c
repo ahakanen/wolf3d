@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 16:44:19 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/30 15:51:23 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,10 @@ static t_params	initparams(void)
 	params.skyclr = g_initcolor(98, 24, 19, 0);
 	params.floorclr = g_initcolor(50, 150, 150, 0);
 	initthreadlims(&params);
-	params.llimit = (double)((double)1 / (double)FRAMELIMIT);
+	params.llimit = (double)(1.0 / (double)FRAMELIMIT);
 	params.llimitacc = 0;
+	params.fps = 0;
+	params.fpsloc = g_initvec2(WIN_X - (WIN_X / 16), WIN_Y / 16);
 	return (params);
 }
 

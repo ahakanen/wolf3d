@@ -6,12 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:13:35 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 16:44:40 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:25:31 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h> //test
 
 void	check(t_params *params)
 {
@@ -29,11 +28,13 @@ void	check(t_params *params)
 			rotation(params, WASDLEFT);
 		if (params->p.rotright == 1)
 			rotation(params, WASDRIGHT);
-		params->llimitacc -= params->llimit;
+		if (!(params->fps = ft_itoa((int)(1.0 / params->llimitacc))))
+			print_error(ERRMEM);
 		render(params);
-		params->fps = 0;
-		params->fps = (int)(1 / params->cframe);
-		printf("fps = %d\n", params->fps);//test
+		mlx_string_put(params->win.mlx_ptr, params->win.win_ptr, \
+			params->fpsloc.x, params->fpsloc.y, 0xFFFFFF, params->fps);
+		free(params->fps);
+		params->llimitacc -= params->llimit;
 	}
 }
 
