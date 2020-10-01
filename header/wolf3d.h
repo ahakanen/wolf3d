@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/30 14:51:34 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:14:31 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -202,5 +202,9 @@ void			drawfloor(t_params *params);
 t_tparams		threadhelp(t_params *params);
 int				render_loop(t_params *params);
 void			check(t_params *params);
+void			checkcollisionxf(t_params *params);
+void			checkcollisionxb(t_params *params);
+void			checkcollisionyf(t_params *params);
+void			checkcollisionyb(t_params *params);
 
 #endif

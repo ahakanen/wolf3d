@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/30 14:42:58 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/01 17:34:34 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ static void		*thread(void *param)
 	{
 		rdist = castray(p->params, p->rstart, &clr);
 		p->rstart += p->onefov;
+		if (rdist < TILE >> 2)
+			rdist = TILE >> 2;
 		height = p->mhelp / rdist;
 		drawline(p->imgptr, g_initline(start, p->offset - \
 			height, start, p->offset + height), \

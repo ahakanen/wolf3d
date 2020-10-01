@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:13:35 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/30 16:25:31 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/01 16:54:14 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	check(t_params *params)
 		mlx_string_put(params->win.mlx_ptr, params->win.win_ptr, \
 			params->fpsloc.x, params->fpsloc.y, 0xFFFFFF, params->fps);
 		free(params->fps);
-		params->llimitacc -= params->llimit;
+		params->llimitacc = 0;
 	}
 }
 

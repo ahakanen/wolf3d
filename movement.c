@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 19:01:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/23 11:36:15 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/09/30 16:58:17 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	movement(t_params *params, int dir)
 {
 	if (dir == WASDUP)
 	{
-		params->p.x += params->p.dx * params->p.speed;
-		params->p.y += params->p.dy * params->p.speed;
+		checkcollisionxf(params);
+		checkcollisionyf(params);
 	}
 	if (dir == WASDDOWN)
 	{
-		params->p.x -= params->p.dx * params->p.speed;
-		params->p.y -= params->p.dy * params->p.speed;
+		checkcollisionxb(params);
+		checkcollisionyb(params);
 	}
 }
 
