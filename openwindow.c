@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 15:02:04 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 16:46:06 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/02 17:46:54 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	initwindow(t_params *params)
 void		openwindow(t_params *params)
 {
 	initwindow(params);
+	initblocks(params);
 	mlx_do_key_autorepeatoff(params->win.mlx_ptr);
 	mlx_expose_hook(params->win.win_ptr, expose_hook, params);
 	mlx_hook(params->win.win_ptr, 17, (1L << 17), close_hook, params);

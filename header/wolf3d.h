@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/01 17:14:31 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/02 18:27:24 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,27 @@
 # define WIN_X 640
 # define WIN_Y 512
 # define TILE 64
+# define BLOCKCOUNT 3
 # define STARTROTANGLES 64
 # define END 0
 # define ERRDEF 0
 # define ERRMEM 1
 # define ERRMAP 2
 # define ERREMPTY 3
+# define ERRTEX 4
+# define ERRBLOCKPARSE 5
+# define GETALL 0
+# define GETCOLOR 1
+# define GETSOLID 2
 # define PI 3.1415926535
 # define TWOPI 6.283185307
 # define HALFPI 1.570796326
 # define THREEHALVESPI 4.712388980
 # define DEG 0.0174533
 # define FRAMELIMIT 60
+# define SPRINT 0
+# define SNEAK 1
+# define STOP -1
 
 # if __APPLE__
 #  define ESC 53
@@ -40,7 +49,9 @@
 #  define WASDDOWN 115
 #  define WASDRIGHT 100
 #  define SHIFT 65505
+#  define CTRL 65507
 #  define SPACE 32
+#  define T 116
 # endif
 
 # include "mlx.h"
@@ -58,6 +69,20 @@ typedef struct	s_window
 	void	*mlx_ptr;
 	void	*win_ptr;
 }				t_window;
+
+typedef struct	s_tex
+{
+	void		*img;
+	char		*img_ptr;
+}				t_tex;
+
+typedef struct	s_block
+{
+	t_tex		tex;
+	char		mapchar;
+	int			solid;
+	t_color		mmcolor;
+}				t_block;
 
 typedef struct	s_player
 {
@@ -155,6 +180,8 @@ typedef struct	s_params
 	double		llimitacc;
 	double		llimit;
 	t_vec2		fpsloc;
+	t_block		*blocks;
+	int			toggletex;
 }				t_params;
 
 typedef struct	s_tparams
@@ -195,7 +222,6 @@ void			drawminiborder(t_params *params, int margstart);
 void			initminimapblocks(t_params *params);
 void			drawblock(t_params *params, int i, int j);
 void			getblocksaroundplayer(t_params *params);
-t_color			parsebcolor(char block);
 void			initrotarr(t_params *params);
 void			drawsky(t_params *params);
 void			drawfloor(t_params *params);
@@ -206,5 +232,13 @@ void			checkcollisionxf(t_params *params);
 void			checkcollisionxb(t_params *params);
 void			checkcollisionyf(t_params *params);
 void			checkcollisionyb(t_params *params);
+t_tex			loadtexture(t_params *params, char *path);
+void			initblocks(t_params *params);
+t_block			parseb(t_params *params, char b);
+t_color			parsebcolor(t_params *params, char b);
+int				parsebsolid(t_params *params, char b);
+t_tex			parsebtex(t_params *params, char b);
+void			sprint(t_params *params, int i);
+void			sneak(t_params *params, int i);
 
 #endif

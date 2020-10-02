@@ -6,22 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/02 10:12:38 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/23 11:46:22 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/02 17:36:41 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-
-t_color	parsebcolor(char block)
-{
-	t_color	color;
-
-	if (block == '1')
-		color = (t_color) {0, 0, 250, 0};
-	else
-		color = (t_color) {250, 250, 250, 0};
-	return (color);
-}
 
 void	drawblock(t_params *params, int i, int j)
 {
@@ -31,7 +20,7 @@ void	drawblock(t_params *params, int i, int j)
 		params->mm.bsize, params->mm.boffset.y + (j - 8) * params->mm.bsize);
 	pl = plmakesq(params->mm.blockv, params->mm.bsizeh);
 	plshiftxapplymat(&pl, rotmat2(-params->p.a + 4.71239), params->mm.boffset);
-	pldraw(&pl, params->mm.ptr, parsebcolor(params->mm.blocks[j][i]));
+	pldraw(&pl, params->mm.ptr, parsebcolor(params, params->mm.blocks[j][i]));
 	pldel(&pl);
 }
 

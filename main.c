@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/01 17:05:22 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/02 19:08:19 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void			print_error(int type)
 		ft_putendl("Invalid Map");
 	if (type == 3)
 		ft_putendl("Missing or Empty Map?");
+	if (type == 4)
+		ft_putendl("Texture Error");
+	if (type == 5)
+		ft_putendl("Block Parse Error");
 	exit(1);
 }
 
@@ -75,6 +79,7 @@ static t_params	initparams(void)
 	params.llimitacc = 0;
 	params.fps = 0;
 	params.fpsloc = g_initvec2(WIN_X - (WIN_X / 16), WIN_Y / 16);
+	params.toggletex = 0;
 	return (params);
 }
 
