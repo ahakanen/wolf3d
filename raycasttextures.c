@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   raycasttextures.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 18:35:00 by ahakanen         ###   ########.fr       */
+/*   Created: 2020/10/03 16:32:21 by ahakanen          #+#    #+#             */
+/*   Updated: 2020/10/03 20:11:35 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 static t_ray	initray(t_params *params, double raystart)
 {
@@ -33,54 +32,54 @@ static t_ray	initray(t_params *params, double raystart)
 	return (ray);
 }
 
-static double	castray(t_params *params, double raystart, t_color *clr)
+static t_rtex	castray(t_params *params, double raystart)
 {
 	t_ray	rayh;
 	t_ray	rayv;
-	double	rdist;
+	t_rtex	rtex;
 	double	fishfix;
 
 	rayh = initray(params, raystart);
 	rayh = raycheckh(params, rayh);
-	rdist = rayh.disth;
-	*clr = g_initcolor(0, 250, 0, 0);
+	rtex.rdist = rayh.disth;
+	rtex.offset = (int)rayh.x % TILE;
 	rayv = initray(params, raystart);
 	rayv = raycheckv(params, rayv);
 	if (rayv.distv < rayh.disth)
 	{
-		rdist = rayv.distv;
-		*clr = g_initcolor(0, 0, 250, 0);
+		rtex.rdist = rayv.distv;
+		rtex.offset = (int)rayv.y % TILE;
+		rtex.tex = parsebtex(params, params->map[rayv.mapy][rayv.mapx]);
 	}
+	else
+		rtex.tex = parsebtex(params, params->map[rayh.mapy][rayh.mapx]);
 	fishfix = params->p.a - raystart;
-	rdist = rdist * cos(fishfix);
-	return (rdist);
+	rtex.rdist = rtex.rdist * cos(fishfix);
+	return (rtex);
 }
 
 static void		*thread(void *param)
 {
-	double		rdist;
-	double		height;
-	int			start;
+	t_rtex		rtex;
+	t_rp		rp;
 	t_tparams	*p;
-	t_color		clr;
 
 	p = (t_tparams*)param;
-	start = p->limit * p->num;
+	rp.start = p->limit * p->num;
 	p->rstart = p->params->p.a - p->rstarthelp + p->tastart[p->num];
-	while (start < p->threadlim[p->num])
+	while (rp.start < p->threadlim[p->num])
 	{
-		rdist = castray(p->params, p->rstart, &clr);
+		rtex = castray(p->params, p->rstart);
 		p->rstart += p->onefov;
-		if (rdist < TILE >> 2)
-			rdist = TILE >> 2;
-		height = p->mhelp / rdist;
-		drawline(p->imgptr, g_initline(start, p->offset - \
-			height, start, p->offset + height), clr);
-		start++;
+		rp.height = p->mhelp / rtex.rdist;
+		if (rp.height > p->params->maxheight)
+			rp.height = p->params->maxheight;
+		drawtex(p, rtex, rp);
+		rp.start++;
 	}
 }
 
-static void		castrays(t_params *params)
+void		castraystex(t_params *params)
 {
 	pthread_t	threads[CPUCORES];
 	t_tparams	tp[CPUCORES];
@@ -103,27 +102,4 @@ static void		castrays(t_params *params)
 	}
 	mlx_put_image_to_window(params->win.mlx_ptr, \
 		params->win.win_ptr, params->img, 0, 0);
-}
-
-void			render(t_params *params)
-{
-	params->img = mlx_new_image(params->win.mlx_ptr, WIN_X, \
-									WIN_Y);
-	params->img_ptr = mlx_get_data_addr(params->img, &params->bpp, \
-				&params->size, &params->endian);
-	params->imgptr = g_initimgptr(params->img_ptr, WIN_X, WIN_Y);
-	if (params->toggletex == 1)
-	{
-		drawfloor(params);
-		drawsky(params);
-		castraystex(params);
-	}
-	else
-	{
-		drawfloor(params);
-		drawsky(params);
-		castrays(params);
-	}
-	drawminimap(params);
-	mlx_destroy_image(params->win.mlx_ptr, params->img);
 }

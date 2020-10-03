@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 15:46:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/02 17:47:18 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/03 18:08:00 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int		parsebsolid(t_params *params, char b)
 	print_error(ERRBLOCKPARSE);
 }
 
-t_tex	parsebtex(t_params *params, char b)
+t_tex	*parsebtex(t_params *params, char b)
 {
 	int		i;
 

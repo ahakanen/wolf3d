@@ -6,13 +6,13 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/02 18:27:24 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/03 19:55:45 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# define CPUCORES 4
+# define CPUCORES 1
 # define WIN_X 640
 # define WIN_Y 512
 # define TILE 64
@@ -76,9 +76,23 @@ typedef struct	s_tex
 	char		*img_ptr;
 }				t_tex;
 
+typedef struct	s_rtex
+{
+	t_tex		*tex;
+	double		rdist;
+	int			offset;
+}				t_rtex;
+
+typedef struct	s_rp
+{
+	double		height;
+	int			start;
+	int			offset;
+}				t_rp;
+
 typedef struct	s_block
 {
-	t_tex		tex;
+	t_tex		*tex;
 	char		mapchar;
 	int			solid;
 	t_color		mmcolor;
@@ -182,6 +196,7 @@ typedef struct	s_params
 	t_vec2		fpsloc;
 	t_block		*blocks;
 	int			toggletex;
+	int			maxheight;
 }				t_params;
 
 typedef struct	s_tparams
@@ -232,13 +247,16 @@ void			checkcollisionxf(t_params *params);
 void			checkcollisionxb(t_params *params);
 void			checkcollisionyf(t_params *params);
 void			checkcollisionyb(t_params *params);
-t_tex			loadtexture(t_params *params, char *path);
+t_tex			*loadtexture(t_params *params, char *path);
 void			initblocks(t_params *params);
 t_block			parseb(t_params *params, char b);
 t_color			parsebcolor(t_params *params, char b);
 int				parsebsolid(t_params *params, char b);
-t_tex			parsebtex(t_params *params, char b);
+t_tex			*parsebtex(t_params *params, char b);
 void			sprint(t_params *params, int i);
 void			sneak(t_params *params, int i);
+void			castraystex(t_params *params);
+void			drawtex(t_tparams *p, t_rtex rtex, t_rp rp);
+t_color			clrfromtex(t_tex *tex, int x, int y);
 
 #endif

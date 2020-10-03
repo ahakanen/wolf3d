@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/02 19:08:19 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/03 18:55:20 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static t_params	initparams(void)
 	params.fps = 0;
 	params.fpsloc = g_initvec2(WIN_X - (WIN_X / 16), WIN_Y / 16);
 	params.toggletex = 0;
+	params.maxheight = TILE * WIN_Y;
 	return (params);
 }
 

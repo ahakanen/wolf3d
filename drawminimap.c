@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 19:09:51 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/23 11:31:04 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/03 15:10:24 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void		drawminiborder(t_params *params, int margstart)
 {
 	int i;
 
-	params->mm.color = (t_color) {250, 0, 120};
+	params->mm.color = (t_color) {120, 120, 120, 0};
 	params->mm.margleft = (t_line) {margstart, 0, margstart, params->mm.winy};
 	i = margstart;
 	while (i < params->mm.winx)

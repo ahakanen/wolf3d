@@ -6,12 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:13:35 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/02 19:14:41 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/03 14:59:51 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>//test
 
 void	check(t_params *params)
 {
