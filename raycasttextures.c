@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:32:21 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 20:11:35 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/07 19:24:18 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static t_rtex	castray(t_params *params, double raystart)
 	t_ray	rayh;
 	t_ray	rayv;
 	t_rtex	rtex;
-	double	fishfix;
 
 	rayh = initray(params, raystart);
 	rayh = raycheckh(params, rayh);
@@ -53,8 +52,7 @@ static t_rtex	castray(t_params *params, double raystart)
 	}
 	else
 		rtex.tex = parsebtex(params, params->map[rayh.mapy][rayh.mapx]);
-	fishfix = params->p.a - raystart;
-	rtex.rdist = rtex.rdist * cos(fishfix);
+	rtex.rdist = rtex.rdist * cos(params->p.a - raystart);
 	return (rtex);
 }
 
@@ -66,6 +64,7 @@ static void		*thread(void *param)
 
 	p = (t_tparams*)param;
 	rp.start = p->limit * p->num;
+	drawfloortex(p->params, rp.start, p->threadlim[p->num], p->num);
 	p->rstart = p->params->p.a - p->rstarthelp + p->tastart[p->num];
 	while (rp.start < p->threadlim[p->num])
 	{

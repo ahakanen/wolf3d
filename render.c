@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 18:35:00 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/07 12:31:54 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,6 @@ void			render(t_params *params)
 	params->imgptr = g_initimgptr(params->img_ptr, WIN_X, WIN_Y);
 	if (params->toggletex == 1)
 	{
-		drawfloor(params);
 		drawsky(params);
 		castraystex(params);
 	}

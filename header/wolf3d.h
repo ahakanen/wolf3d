@@ -6,13 +6,13 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 19:55:45 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/07 18:08:13 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WOLF3D_H
 # define WOLF3D_H
-# define CPUCORES 1
+# define CPUCORES 4
 # define WIN_X 640
 # define WIN_Y 512
 # define TILE 64
@@ -82,6 +82,21 @@ typedef struct	s_rtex
 	double		rdist;
 	int			offset;
 }				t_rtex;
+
+typedef struct	s_flr
+{
+	int		i;
+	int		j;
+	int		wpos;
+	double	raydirx0;
+	double	raydiry0;
+	double	raydirx1;
+	double	raydiry1;
+	double	rd;
+	t_vec2	pos;
+	t_vec2	step;
+	t_tex	*tex;
+}				t_flr;
 
 typedef struct	s_rp
 {
@@ -258,5 +273,6 @@ void			sneak(t_params *params, int i);
 void			castraystex(t_params *params);
 void			drawtex(t_tparams *p, t_rtex rtex, t_rp rp);
 t_color			clrfromtex(t_tex *tex, int x, int y);
+void			drawfloortex(t_params *p, int xstart, int xlimit, int num);
 
 #endif
