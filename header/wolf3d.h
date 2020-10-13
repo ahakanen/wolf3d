@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/07 18:08:13 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:02:13 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define WIN_X 640
 # define WIN_Y 512
 # define TILE 64
-# define BLOCKCOUNT 3
+# define BLOCKCOUNT 5
 # define STARTROTANGLES 64
 # define END 0
 # define ERRDEF 0
@@ -25,6 +25,7 @@
 # define ERREMPTY 3
 # define ERRTEX 4
 # define ERRBLOCKPARSE 5
+# define ERRSKYBOX 6
 # define GETALL 0
 # define GETCOLOR 1
 # define GETSOLID 2
@@ -74,6 +75,8 @@ typedef struct	s_tex
 {
 	void		*img;
 	char		*img_ptr;
+	int			imgw;
+	int			imgh;
 }				t_tex;
 
 typedef struct	s_rtex
@@ -85,18 +88,25 @@ typedef struct	s_rtex
 
 typedef struct	s_flr
 {
-	int		i;
-	int		j;
-	int		wpos;
-	double	raydirx0;
-	double	raydiry0;
-	double	raydirx1;
-	double	raydiry1;
-	double	rd;
-	t_vec2	pos;
-	t_vec2	step;
-	t_tex	*tex;
+	int			i;
+	int			j;
+	int			wpos;
+	double		xl;
+	double		yl;
+	double		xr;
+	double		yr;
+	double		rd;
+	t_vec2		pos;
+	t_vec2		step;
+	t_tex		*tex;
 }				t_flr;
+
+typedef struct	s_sky
+{
+	t_tex		*tex;
+	double		start;
+	int			w;
+}				t_sky;
 
 typedef struct	s_rp
 {
@@ -212,6 +222,7 @@ typedef struct	s_params
 	t_block		*blocks;
 	int			toggletex;
 	int			maxheight;
+	t_sky		sky;
 }				t_params;
 
 typedef struct	s_tparams
@@ -264,6 +275,7 @@ void			checkcollisionyf(t_params *params);
 void			checkcollisionyb(t_params *params);
 t_tex			*loadtexture(t_params *params, char *path);
 void			initblocks(t_params *params);
+void			initblocks2(t_params *params);
 t_block			parseb(t_params *params, char b);
 t_color			parsebcolor(t_params *params, char b);
 int				parsebsolid(t_params *params, char b);
@@ -274,5 +286,8 @@ void			castraystex(t_params *params);
 void			drawtex(t_tparams *p, t_rtex rtex, t_rp rp);
 t_color			clrfromtex(t_tex *tex, int x, int y);
 void			drawfloortex(t_params *p, int xstart, int xlimit, int num);
+void			initskybox(t_params *params);
+void			drawskybox(t_params *p);
+t_tex			*loadtexskybox(t_params *params, char *path);
 
 #endif

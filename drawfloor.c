@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 12:55:47 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/07 21:36:59 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/13 14:52:13 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 static void	initvalues(t_params *p, t_flr *f)
 {
-	f->raydirx0 = cos(p->p.a - p->rstarthelp);
-	f->raydiry0 = sin(p->p.a - p->rstarthelp);
-	f->raydirx1 = cos(p->p.a + p->rstarthelp);
-	f->raydiry1 = sin(p->p.a + p->rstarthelp);
+	f->xl = cos(p->p.a - p->rstarthelp);
+	f->yl = sin(p->p.a - p->rstarthelp);
+	f->xr = cos(p->p.a + p->rstarthelp);
+	f->yr = sin(p->p.a + p->rstarthelp);
 	f->wpos = f->j - (WIN_Y >> 1);
 	f->rd = ((WIN_Y >> 1) << 6) / f->wpos;
-	f->step.x = f->rd * (f->raydirx1 - f->raydirx0) / WIN_X;
-	f->step.y = f->rd * (f->raydiry1 - f->raydiry0) / WIN_X;
-	f->pos.x = p->p.x + f->rd * f->raydirx0 + f->step.x * f->i;
-	f->pos.y = p->p.y + f->rd * f->raydiry0 + f->step.y * f->i;
+	f->step.x = f->rd * (f->xr - f->xl) / WIN_X;
+	f->step.y = f->rd * (f->yr - f->yl) / WIN_X;
+	f->pos.x = p->p.x + f->rd * f->xl + f->step.x * f->i;
+	f->pos.y = p->p.y + f->rd * f->yl + f->step.y * f->i;
 }
 
 void		drawfloortex(t_params *p, int xstart, int xlimit, int num)

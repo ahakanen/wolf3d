@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:48:36 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/30 19:17:47 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:08:26 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ t_ray		raycheckh(t_params *params, t_ray ray)
 		ray.mapx = (int)ray.x >> 6;
 		ray.mapy = (int)ray.y >> 6;
 		if (ray.mapx >= 0 && ray.mapy >= 0 && ray.mapx < params->sizex && \
-		ray.mapy < params->sizey && params->map[ray.mapy][ray.mapx] == '1')
+		ray.mapy < params->sizey && parsebsolid(params, \
+									params->map[ray.mapy][ray.mapx]) == 1)
 		{
 			ray.disth = vlen(params->p.x, params->p.y, ray.x, ray.y);
 			dof = 128;
@@ -97,7 +98,8 @@ t_ray		raycheckv(t_params *params, t_ray ray)
 		ray.mapx = (int)ray.x >> 6;
 		ray.mapy = (int)ray.y >> 6;
 		if (ray.mapx >= 0 && ray.mapy >= 0 && ray.mapx < params->sizex && \
-		ray.mapy < params->sizey && params->map[ray.mapy][ray.mapx] == '1')
+		ray.mapy < params->sizey && parsebsolid(params, \
+									params->map[ray.mapy][ray.mapx]) == 1)
 		{
 			ray.distv = vlen(params->p.x, params->p.y, ray.x, ray.y);
 			dof = 128;

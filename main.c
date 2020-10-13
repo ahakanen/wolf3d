@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/07 15:32:48 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/13 14:55:45 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ void			print_error(int type)
 		ft_putendl("Texture Error");
 	if (type == 5)
 		ft_putendl("Block Parse Error");
+	if (type == 6)
+		ft_putendl("Invalid Skybox");
 	exit(1);
 }
 

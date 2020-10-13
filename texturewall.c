@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 17:49:21 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 20:11:36 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/13 16:13:05 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_color		clrfromtex(t_tex *tex, int x, int y)
 	t_color	color;
 	int		i;
 
-	i = y * TILE * 4 + x * 4;
+	i = y * tex->imgw + x * 4;
 	color.r = tex->img_ptr[i];
 	color.g = tex->img_ptr[i + 1];
 	color.b = tex->img_ptr[i + 2];

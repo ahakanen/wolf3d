@@ -6,7 +6,7 @@
 #    By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/02/16 05:19:03 by ahakanen          #+#    #+#              #
-#    Updated: 2020/10/03 18:14:54 by ahakanen         ###   ########.fr        #
+#    Updated: 2020/10/13 19:07:18 by ahakanen         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRC = main.c help.c validate.c savemap.c initplayerstart.c openwindow.c \
 		deal_key.c movement.c render.c raycheck.c drawminimap.c \
 		minimapblocks.c rotarr.c drawsky.c drawfloor.c threadhelp.c \
 		renderloop.c collision.c loadtexture.c parseblock.c initblocks.c \
-		texturewall.c raycasttextures.c
+		texturewall.c raycasttextures.c initblocks2.c
 
 all: $(NAME)
 
