@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 19:02:13 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 09:26:22 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 #  define CTRL 65507
 #  define SPACE 32
 #  define T 116
+#  define M 109
 # endif
 
 # include "mlx.h"
@@ -152,6 +153,7 @@ typedef struct	s_ray
 	double		rdist;
 	int			mapx;
 	int			mapy;
+	t_color		color;
 }				t_ray;
 
 typedef struct	s_minimap

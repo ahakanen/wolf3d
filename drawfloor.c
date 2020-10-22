@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 12:55:47 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 14:52:13 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 09:34:39 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 
 static void	initvalues(t_params *p, t_flr *f)
 {
-	f->xl = cos(p->p.a - p->rstarthelp);
-	f->yl = sin(p->p.a - p->rstarthelp);
-	f->xr = cos(p->p.a + p->rstarthelp);
-	f->yr = sin(p->p.a + p->rstarthelp);
+	double	al;
+	double	ar;
+
+	al = p->p.a - p->rstarthelp + (2 * DEG);
+	ar = p->p.a + p->rstarthelp - (2 * DEG);
+	f->xl = cos(al);
+	f->yl = sin(al);
+	f->xr = cos(ar);
+	f->yr = sin(ar);
 	f->wpos = f->j - (WIN_Y >> 1);
-	f->rd = ((WIN_Y >> 1) << 6) / f->wpos;
+	f->rd = (((WIN_Y >> 1) << 6) + TILE * 32) / f->wpos;
 	f->step.x = f->rd * (f->xr - f->xl) / WIN_X;
 	f->step.y = f->rd * (f->yr - f->yl) / WIN_X;
 	f->pos.x = p->p.x + f->rd * f->xl + f->step.x * f->i;

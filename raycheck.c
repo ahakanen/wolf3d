@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:48:36 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 19:08:26 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 09:16:10 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void	raycheckhhelp(t_params *params, t_ray *ray, int *dof)
 		ray->x = (params->p.y - ray->y) * ray->atan + params->p.x;
 		ray->yo = -64;
 		ray->xo = -ray->yo * ray->atan;
+		ray->color = g_initcolor(250, 0, 0, 0);
 	}
 	else if (ray->a < PI)
 	{
@@ -27,6 +28,7 @@ static void	raycheckhhelp(t_params *params, t_ray *ray, int *dof)
 		ray->x = (params->p.y - ray->y) * ray->atan + params->p.x;
 		ray->yo = 64;
 		ray->xo = -ray->yo * ray->atan;
+		ray->color = g_initcolor(0, 204, 255, 0);
 	}
 	else
 	{
@@ -71,6 +73,7 @@ static void	raycheckvhelp(t_params *params, t_ray *ray, int *dof)
 		ray->y = (params->p.x - ray->x) * ray->ntan + params->p.y;
 		ray->xo = -64;
 		ray->yo = -ray->xo * ray->ntan;
+		ray->color = g_initcolor(0, 0, 250, 0);
 	}
 	else if (ray->a < HALFPI || ray->a > THREEHALVESPI)
 	{
@@ -78,6 +81,7 @@ static void	raycheckvhelp(t_params *params, t_ray *ray, int *dof)
 		ray->y = (params->p.x - ray->x) * ray->ntan + params->p.y;
 		ray->xo = 64;
 		ray->yo = -ray->xo * ray->ntan;
+		ray->color = g_initcolor(0, 250, 0, 0);
 	}
 	else
 	{

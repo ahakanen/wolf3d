@@ -6,12 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 15:36:47 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 08:51:55 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>
 
 static t_ray	initray(t_params *params, double raystart)
 {
@@ -43,13 +42,13 @@ static double	castray(t_params *params, double raystart, t_color *clr)
 	rayh = initray(params, raystart);
 	rayh = raycheckh(params, rayh);
 	rdist = rayh.disth;
-	*clr = g_initcolor(0, 250, 0, 0);
+	*clr = rayh.color;
 	rayv = initray(params, raystart);
 	rayv = raycheckv(params, rayv);
 	if (rayv.distv < rayh.disth)
 	{
 		rdist = rayv.distv;
-		*clr = g_initcolor(0, 0, 250, 0);
+		*clr = rayv.color;
 	}
 	fishfix = params->p.a - raystart;
 	rdist = rdist * cos(fishfix);
@@ -112,6 +111,7 @@ void			render(t_params *params)
 	params->img_ptr = mlx_get_data_addr(params->img, &params->bpp, \
 				&params->size, &params->endian);
 	params->imgptr = g_initimgptr(params->img_ptr, WIN_X, WIN_Y);
+	drawminimap(params);
 	if (params->toggletex == 1)
 	{
 		drawskybox(params);
@@ -123,6 +123,11 @@ void			render(t_params *params)
 		drawsky(params);
 		castrays(params);
 	}
-	drawminimap(params);
+	if (params->mm.skip == 0)
+	{
+		mlx_put_image_to_window(params->win.mlx_ptr, params->win.win_ptr, \
+								params->mm.img, 0, 0);
+		mlx_destroy_image(params->win.mlx_ptr, params->mm.img);
+	}
 	mlx_destroy_image(params->win.mlx_ptr, params->img);
 }

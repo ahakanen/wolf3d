@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 14:55:45 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 09:05:51 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ static t_params	initparams(void)
 	params.offset = WIN_Y >> 1;
 	params.rstarthelp = (params.fov >> 1) * DEG;
 	params.mhelp = (TILE * WIN_Y >> 1);
-	params.mm.skip = 0;
+	params.mm.skip = 1;
 	params.p.ai = 0;
 	params.skyclr = g_initcolor(98, 24, 19, 0);
 	params.floorclr = g_initcolor(50, 150, 150, 0);

@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 15:40:52 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/02 19:11:33 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/19 12:39:39 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int		press_key(int key, t_params *params)
 		params->p.speed = 2;
 	if (key == T)
 		params->toggletex = (params->toggletex + 1) % 2;
+	if (key == M)
+		params->mm.skip = (params->mm.skip + 1) % 2;
 	printf("toggletex = |%d|\n", params->toggletex);//test
 	printf("key = |%d|\n", key);//test
 	check(params);

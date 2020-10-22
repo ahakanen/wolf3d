@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 19:09:51 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 15:10:24 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/19 12:35:50 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,5 @@ void		drawminimap(t_params *params)
 		params->mm.boffset = vecadd2(params->mm.p, params->mm.poffset);
 		drawminimap2(params);
 		drawminiborder(params, params->mm.margstart);
-		mlx_put_image_to_window(params->win.mlx_ptr, params->win.win_ptr, \
-								params->mm.img, 0, 0);
-		mlx_destroy_image(params->win.mlx_ptr, params->mm.img);
 	}
 }
