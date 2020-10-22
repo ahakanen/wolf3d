@@ -6,11 +6,24 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 14:02:14 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/09/29 17:00:47 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:17:01 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+void		initplayer(t_params *params)
+{
+	params->p.a = 0;
+	params->p.x = 0;
+	params->p.y = 0;
+	params->p.movef = 0;
+	params->p.moveb = 0;
+	params->p.rotleft = 0;
+	params->p.rotright = 0;
+	params->p.strafeleft = 0;
+	params->p.straferight = 0;
+}
 
 static void	initplayerstart2(t_params *params)
 {

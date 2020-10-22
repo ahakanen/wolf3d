@@ -6,11 +6,27 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:13:35 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 14:59:51 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:22:46 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
+
+static void checkmovement(t_params *params)
+{
+	if (params->p.movef == 1)
+		movement(params, WASDUP);
+	if (params->p.moveb == 1)
+		movement(params, WASDDOWN);
+	if (params->p.rotleft == 1)
+		rotation(params, WASDLEFT);
+	if (params->p.rotright == 1)
+		rotation(params, WASDRIGHT);
+	if (params->p.strafeleft == 1)
+		movement(params, Q);
+	if (params->p.straferight == 1)
+		movement(params, E);
+}
 
 void	check(t_params *params)
 {
@@ -20,14 +36,7 @@ void	check(t_params *params)
 	params->lstart = clock();
 	if (params->llimitacc >= params->llimit)
 	{
-		if (params->p.movef == 1)
-			movement(params, WASDUP);
-		if (params->p.moveb == 1)
-			movement(params, WASDDOWN);
-		if (params->p.rotleft == 1)
-			rotation(params, WASDLEFT);
-		if (params->p.rotright == 1)
-			rotation(params, WASDRIGHT);
+		checkmovement(params);
 		if (!(params->fps = ft_itoa((int)(1.0 / params->llimitacc))))
 			print_error(ERRMEM);
 		render(params);

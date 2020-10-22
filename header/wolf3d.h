@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:22 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 09:26:22 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:36:30 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,12 @@
 #  define WASDLEFT 97
 #  define WASDDOWN 115
 #  define WASDRIGHT 100
+#  define Q	113
+#  define E 101
+#  define UP 65362
+#  define DOWN 65364
+#  define LEFT 65361
+#  define RIGHT 65363
 #  define SHIFT 65505
 #  define CTRL 65507
 #  define SPACE 32
@@ -136,6 +142,8 @@ typedef struct	s_player
 	int			moveb;
 	int			rotleft;
 	int			rotright;
+	int			strafeleft;
+	int			straferight;
 	double		speed;
 }				t_player;
 
@@ -248,6 +256,7 @@ void			usage(void);
 void			help(void);
 void			validate(const int fd, t_params *params);
 void			savemap(int fd, t_params *params);
+void			initplayer(t_params *params);
 void			initplayerstart(t_params *params);
 void			openwindow(t_params *params);
 int				press_key(int key, t_params *params);

@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/27 12:38:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 09:05:51 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/22 13:16:17 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,8 @@ static void		initthreadlims(t_params *params)
 static t_params	initparams(void)
 {
 	t_params	params;
-	params.p.a = 0;
-	params.p.x = 0;
-	params.p.y = 0;
-	params.p.movef = 0;
-	params.p.moveb = 0;
-	params.p.rotleft = 0;
-	params.p.rotright = 0;
+
+	initplayer(&params);
 	params.fov = 60;
 	params.onefov = params.fov * DEG / WIN_X;
 	params.offset = WIN_Y >> 1;
