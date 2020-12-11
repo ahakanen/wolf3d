@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 12:55:47 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 18:17:36 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:15:47 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ static t_color	getskyclr(t_tex *tex, int x, int y)
 	return (color);
 }
 
-void	initskybox(t_params *p)
+void			initskybox(t_params *p)
 {
 	p->sky.tex = loadtexskybox(p, "./textures/skyboxnight.xpm");
 	p->sky.w = p->sky.tex->imgw >> 2;
 	p->sky.start = WIN_X * 360 / p->fov / TWOPI;
 }
 
-void	drawskybox(t_params *p)
+void			drawskybox(t_params *p)
 {
 	int		i;
 	int		j;
@@ -60,7 +60,7 @@ void	drawskybox(t_params *p)
 	}
 }
 
-void	drawsky(t_params *params)
+void			drawsky(t_params *params)
 {
 	int	i;
 	int	end;

@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 12:23:26 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/08/01 15:00:02 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:59:34 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 static void	blockhelp(void)
 {
-	ft_putendl("S = player start (default ground)");
+	ft_putendl("S = player start platform");
 	ft_putendl("0 = default ground");
 	ft_putendl("1 = default wall");
+	ft_putendl("2 = stone floor");
+	ft_putendl("3 = stone wall");
 }
 
 void		help(void)
 {
 	ft_putendl("__________\n");
-	ft_putendl("Map should be a rectangle of 1-blocks with any other char");
+	ft_putendl("Map should be a rectangle of 1-blocks with any other blocks");
 	ft_putendl("inside, separated by single spaces, file ending on a '\\n'.");
 	ft_putendl("The mapfile should not be named 'help'");
 	ft_putendl("If there is no player start, it will default to thelast '0'.");

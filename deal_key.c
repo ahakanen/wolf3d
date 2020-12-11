@@ -6,14 +6,13 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/01 15:40:52 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 13:12:16 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:16:26 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>//test
 
-static	int	arrowtowasd(int key)
+static int	arrowtowasd(int key)
 {
 	if (key == UP)
 		return (WASDUP);
@@ -25,7 +24,7 @@ static	int	arrowtowasd(int key)
 		return (WASDRIGHT);
 }
 
-int		press_key(int key, t_params *params)
+int			press_key(int key, t_params *params)
 {
 	key = arrowtowasd(key);
 	if (key == WASDUP || key == WASDLEFT || \
@@ -40,13 +39,11 @@ int		press_key(int key, t_params *params)
 		params->toggletex = (params->toggletex + 1) % 2;
 	if (key == M)
 		params->mm.skip = (params->mm.skip + 1) % 2;
-	printf("toggletex = |%d|\n", params->toggletex);//test
-	printf("key = |%d|\n", key);//test
 	check(params);
 	return (0);
 }
 
-int		release_key(int key, t_params *params)
+int			release_key(int key, t_params *params)
 {
 	key = arrowtowasd(key);
 	if (key == ESC)

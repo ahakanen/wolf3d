@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 14:43:03 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/19 14:35:07 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:06:36 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_block	stonefloor(t_params *params)
 	return (block);
 }
 
-void	initblocks(t_params *params)
+void			initblocks(t_params *params)
 {
 	if (!(params->blocks = (t_block *)malloc(sizeof(t_block) * BLOCKCOUNT)))
 		print_error(ERRMEM);

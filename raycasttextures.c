@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/03 16:32:21 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 08:57:27 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:16:51 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ static void		*thread(void *param)
 	}
 }
 
-void		castraystex(t_params *params)
+void			castraystex(t_params *params)
 {
 	pthread_t	threads[CPUCORES];
 	t_tparams	tp[CPUCORES];

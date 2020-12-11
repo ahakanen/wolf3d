@@ -6,12 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 12:55:47 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 09:34:39 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:17:04 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>//test
 
 static void	initvalues(t_params *p, t_flr *f)
 {
@@ -58,7 +57,7 @@ void		drawfloortex(t_params *p, int xstart, int xlimit, int num)
 	}
 }
 
-void	drawfloor(t_params *params)
+void		drawfloor(t_params *params)
 {
 	int	i;
 

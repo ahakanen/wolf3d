@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 19:00:01 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/13 19:02:36 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:15:33 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static t_block	stonewallvine(t_params *params)
 	return (block);
 }
 
-void	initblocks2(t_params *params)
+void			initblocks2(t_params *params)
 {
 	params->blocks[4] = stonewallvine(params);
 }

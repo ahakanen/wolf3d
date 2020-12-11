@@ -6,7 +6,7 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/03 09:59:53 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 08:51:55 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/10/23 17:42:24 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ static double	castray(t_params *params, double raystart, t_color *clr)
 	t_ray	rayh;
 	t_ray	rayv;
 	double	rdist;
-	double	fishfix;
 
 	rayh = initray(params, raystart);
 	rayh = raycheckh(params, rayh);
@@ -50,8 +49,7 @@ static double	castray(t_params *params, double raystart, t_color *clr)
 		rdist = rayv.distv;
 		*clr = rayv.color;
 	}
-	fishfix = params->p.a - raystart;
-	rdist = rdist * cos(fishfix);
+	rdist = rdist * cos(params->p.a - raystart);
 	return (rdist);
 }
 

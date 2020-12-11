@@ -6,12 +6,11 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/02 15:46:16 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/03 18:08:00 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:06:13 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
-#include <stdio.h>//test
 
 t_block	parseb(t_params *params, char b)
 {

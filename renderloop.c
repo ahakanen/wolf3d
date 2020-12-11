@@ -6,13 +6,13 @@
 /*   By: ahakanen <aleksi.hakanen94@gmail.com>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/29 09:13:35 by ahakanen          #+#    #+#             */
-/*   Updated: 2020/10/22 13:22:46 by ahakanen         ###   ########.fr       */
+/*   Updated: 2020/12/07 12:05:46 by ahakanen         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "wolf3d.h"
 
-static void checkmovement(t_params *params)
+static void	checkmovement(t_params *params)
 {
 	if (params->p.movef == 1)
 		movement(params, WASDUP);
@@ -28,7 +28,7 @@ static void checkmovement(t_params *params)
 		movement(params, E);
 }
 
-void	check(t_params *params)
+void		check(t_params *params)
 {
 	params->lend = clock();
 	params->lcycle = (double)(params->lend - params->lstart) / CLOCKS_PER_SEC;
@@ -47,7 +47,7 @@ void	check(t_params *params)
 	}
 }
 
-int	render_loop(t_params *params)
+int			render_loop(t_params *params)
 {
 	check(params);
 	return (0);
